@@ -1,3 +1,5 @@
+"use strict";
+
 import * as canvasUtils from "./canvasUtils/index.js";
 import * as shapeUtils from "./shapeUtils/index.js";
 
