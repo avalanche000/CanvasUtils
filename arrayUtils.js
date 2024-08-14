@@ -2,7 +2,7 @@
 
 /**
  * Returns an array of the specified length filled with the specified value
- * @param {int} length - The length of the array to be created
+ * @param {number} length - The length of the array to be created
  * @param {any} value - The value to fill each index of the array with
  * @returns {any[]} The final array
  */
@@ -12,9 +12,9 @@ function arrayOf(length, value) {
 
 /**
  * Returns an ordered array of increasing consecutive integers either [0, a) or [a, b) depending on the inputs
- * @param {int} a - The start of the array of integers, if b is null then a becomes the end of te array
- * @param {int | undefined} b - If defined, then b is the end of the array
- * @returns {int[]} The array of integers
+ * @param {number} a - The start of the array of integers, if b is null then a becomes the end of te array
+ * @param {number | undefined} b - If defined, then b is the end of the array
+ * @returns {number[]} The array of integers
  */
 function range(a, b) {
     let min = 0;
@@ -36,8 +36,8 @@ function range(a, b) {
 
 /**
  * Returns an array of each step in a nested counter where each step itself is an array of counters that increase only when the previous reaches its limit, starting from right to left
- * @param {...int} args - An array of integers that represent how high each counter should go before reseting
- * @returns {int[][]} The array of steps of the nested counters
+ * @param {number[]} args - An array of integers that represent how high each counter should go before reseting
+ * @returns {number[][]} The array of steps of the nested counters
  */
 function nestedCounter(...args) {
     const array = [];
