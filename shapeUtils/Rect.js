@@ -2,7 +2,7 @@
 
 import Vector2D from "./Vector2D.js";
 
-class VectorRect {
+class Rect {
     constructor(x = 0, y = 0, width = 0, height = 0) {
         this.x = x;
         this.y = y;
@@ -133,4 +133,4 @@ class VectorRect {
     }
 }
 
-export default VectorRect;
+export default Rect;
