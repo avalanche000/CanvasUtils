@@ -8,7 +8,7 @@ import * as numberUtils from "./numberUtils.js";
 export {
   canvasUtils,
   shapeUtils,
-  ...DOMUtils,
-  ...arrayUtils,
-  ...numberUtils,
+  DOMUtils,
+  arrayUtils,
+  numberUtils,
 };
