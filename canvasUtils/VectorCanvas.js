@@ -1,13 +1,13 @@
 "use strict";
 
 import DrawingUtils from "./DrawingUtils.js";
-import Rect from "../shapeUtils/Rect.js";
+import VectorRect from "../shapeUtils/VectorRect.js";
 
 class VectorCanvas {
     constructor(DOMObject) {
         this.DOMObject = DOMObject;
         this.draw = new DrawingUtils(this);
-        this.rect = new Rect;
+        this.rect = new VectorRect;
 
         window.addEventListener("resize", () => this.resize());
 
