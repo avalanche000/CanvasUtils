@@ -10,14 +10,25 @@ class DrawingUtils {
         this.ctx.clearRect(this.canvas.rect);
     }
 
-    fillRect(color, rect) {
+    rect(color, rect, width) {
+        this.ctx.strokeStyle = color;
         this.ctx.fillStyle = color;
-        
-        this.ctx.fillRect(...rect);
+
+        this.ctx.beginPath();
+
+        this.ctx.rect(...rect);
+
+        this.ctx.closePath();
+
+        if (width == null) this.ctx.fill();
+        else {
+            this.ctx.lineWidth = width;
+            this.ctx.stroke();
+        }
     }
 
     fill(color) {
-        this.fillRect(color, this.canvas.rect);
+        this.rect(color, this.canvas.rect);
     }
 
     circle(color, pos, radius, width) {
