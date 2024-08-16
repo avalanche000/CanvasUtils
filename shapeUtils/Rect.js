@@ -18,15 +18,15 @@ class Rect {
     }
 
     get pos() {
-        return new [this.x, this.y];
+        return [this.x, this.y];
     }
 
     get size() {
-        return new [this.width, this.height];
+        return [this.width, this.height];
     }
 
     get center() {
-        return new [this.x + this.width / 2, this.y + this.height / 2];
+        return [this.x + this.width / 2, this.y + this.height / 2];
     }
 
     get bottom() {
@@ -54,7 +54,7 @@ class Rect {
     }
 
     getAnchor(anchor) {
-      return new [this.x + this.width * anchor[0], this.y + this.height * anchor[1]];
+      return [this.x + this.width * anchor[0], this.y + this.height * anchor[1]];
     }
 
     set pos(pos) {
