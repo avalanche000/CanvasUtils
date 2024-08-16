@@ -49,10 +49,10 @@ function clamp(min, max, x) {
 
 /**
  * Maps a number from one interpolation range to another
- * @param {number} a1 - The "zero" of the current range
- * @param {number} b1 - The "one" of the current range
- * @param {number} a2 - The "zero" of the new range
- * @param {number} b2 - The "one" of the new range
+ * @param {number} a1 - The min of the current range
+ * @param {number} b1 - The max of the current range
+ * @param {number} a2 - The min of the new range
+ * @param {number} b2 - The max of the new range
  * @param {number} x - The number on range a1 to b1
  * @returns {number} The number on range a2 to b2
  */
