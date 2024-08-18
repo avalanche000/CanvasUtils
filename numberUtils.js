@@ -60,4 +60,15 @@ function map(a1, b1, a2, b2, x) {
   return (x - a1) / (b1 - a1) * (b2 - a2) + a2;
 }
 
-export { toDeg, toRad, wrap, clamp, map };
+/**
+ * (Linear Interpolate) Interpolates between two values a and b with t=0 being a and t=1 being b
+ * @param {number} a - The value at t=0
+ * @param {number} b - The value at t=1
+ * @param {number} t - The interpolation value
+ * @returns {number} The interpolated value
+ */
+function lerp(a, b, t) {
+    return a + (b - a) * t;
+}
+
+export { toDeg, toRad, wrap, clamp, map, lerp };
