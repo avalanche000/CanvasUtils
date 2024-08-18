@@ -19,7 +19,7 @@ function useSlider(sliderElement, min, max, value) {
 
     sliderElement.min = min;
     sliderElement.max = max;
-    sliderElement.value = value;
+    sliderElement.value = value ?? min;
 
     const listeners = []
 
