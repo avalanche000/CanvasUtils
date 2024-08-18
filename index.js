@@ -6,6 +6,7 @@ import * as shapeUtils from "./shapeUtils/index.js";
 import * as DOMUtils from "./DOMUtils.js";
 import * as arrayUtils from "./arrayUtils.js";
 import * as numberUtils from "./numberUtils.js";
+import * as functionUtils from "./functionUtils.js";
 
 export {
   canvasUtils,
@@ -13,4 +14,5 @@ export {
   DOMUtils,
   arrayUtils,
   numberUtils,
+  functionUtils,
 };
