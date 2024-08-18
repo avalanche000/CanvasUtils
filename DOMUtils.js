@@ -16,15 +16,16 @@ function query(...args) {
 
 function useSlider(sliderElement, min, max, value) {
     sliderElement = query(sliderElement);
-    
+
     sliderElement.min = min;
     sliderElement.max = max;
     sliderElement.value = value;
 
-    return [
-        () => parseInt(sliderElement.value),
-        (value) => sliderElement.value = value,
-    ];
+    const listeners = []
+
+    sliderElement.addEventListener("input", () => listeners.forEach((func) => func(parseInt(sliderElement.value))));
+
+    return (func) => listeners.push(func);
 }
 
 export { query, useSlider };
