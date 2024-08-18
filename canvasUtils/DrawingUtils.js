@@ -7,7 +7,7 @@ class DrawingUtils {
     }
 
     clear() {
-        this.ctx.clearRect(this.canvas.rect.toArray());
+        this.ctx.clearRect(...this.canvas.rect);
     }
 
     rect(color, rect, width) {
