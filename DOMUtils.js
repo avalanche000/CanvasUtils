@@ -14,4 +14,15 @@ function query(...args) {
     return element;
 }
 
-export { query };
+function useSlider(sliderElement, min, max, value) {
+    sliderElement.min = min;
+    sliderElement.max = max;
+    sliderElement.value = value;
+
+    return [
+        () => parseInt(sliderElement.value),
+        (value) => sliderElement.value = value,
+    ];
+}
+
+export { query, useSlider };
