@@ -15,6 +15,8 @@ function query(...args) {
 }
 
 function useSlider(sliderElement, min, max, value) {
+    sliderElement = query(sliderElement);
+    
     sliderElement.min = min;
     sliderElement.max = max;
     sliderElement.value = value;
