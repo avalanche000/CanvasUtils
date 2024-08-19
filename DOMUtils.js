@@ -1,5 +1,7 @@
 "use strict";
 
+import { createOptions } from "./functionUtils.js";
+
 function query(...args) {
     let element = document;
 
@@ -10,34 +12,55 @@ function query(...args) {
             element = args[i];
         }
     }
-    
+
     return element;
 }
 
-function useSlider(sliderElement, min, max, value) {
+function useSlider(sliderElement, min, max, options) {
+    options = createOptions({ value: min, step: 1 }, options);
+
     sliderElement = query(sliderElement);
 
     sliderElement.min = min;
     sliderElement.max = max;
-    sliderElement.value = value ?? min;
+    sliderElement.step = options.step;
+    sliderElement.value = options.value;
 
     const listeners = [];
 
-    sliderElement.addEventListener("input", () => listeners.forEach((func) => func(parseInt(sliderElement.value))));
+    sliderElement.addEventListener("input", () => listeners.forEach((func) => func(parseFloat(sliderElement.value))));
 
-    return (func) => listeners.push(func);
+    return {
+        element: sliderElement,
+        useValue: (func) => listeners.push(func),
+        setValue: (value) => {
+            sliderElement.value = value ?? options.value;
+
+            listeners.forEach((func) => func(parseFloat(sliderElement.value)));
+        },
+    };
 }
 
-function useCheckbox(checkboxElement, checked) {
+function useCheckbox(checkboxElement, options) {
+    options = createOptions({ checked: false }, options);
+
     checkboxElement = query(checkboxElement);
 
-    checkboxElement.checked = checked ?? false;
+    checkboxElement.checked = options.checked;
 
     const listeners = [];
 
     checkboxElement.addEventListener("input", () => listeners.forEach((func) => func(checkboxElement.checked)));
 
-    return (func) => listeners.push(func);
+    return {
+        element: checkboxElement,
+        useChecked: (func) => listeners.push(func),
+        setChecked: (checked) => {
+            checkboxElement.checked = checked ?? options.checked;
+
+            listeners.forEach((func) => func(checkboxElement.checked));
+        },
+    };
 }
 
 export { query, useSlider, useCheckbox };
