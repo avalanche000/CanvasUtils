@@ -21,11 +21,23 @@ function useSlider(sliderElement, min, max, value) {
     sliderElement.max = max;
     sliderElement.value = value ?? min;
 
-    const listeners = []
+    const listeners = [];
 
     sliderElement.addEventListener("input", () => listeners.forEach((func) => func(parseInt(sliderElement.value))));
 
     return (func) => listeners.push(func);
 }
 
-export { query, useSlider };
+function useCheckbox(checkboxElement, checked) {
+    checkboxElement = query(checkboxElement);
+
+    checkboxElement.checked = checked ?? false;
+
+    const listeners = [];
+
+    checkboxElement.addEventListener("input", () => listeners.forEach((func) => func(checkboxElement.checked)));
+
+    return (func) => listeners.push(func);
+}
+
+export { query, useSlider, useCheckbox };
