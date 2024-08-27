@@ -87,4 +87,28 @@ async function preloadImageGenerator(imagePath, imageDirectory = "./src/assets/i
     });
 }
 
-export { query, useSlider, useCheckbox, preloadImage, preloadImageGenerator };
+async function preloadImages(imagePaths, imageDirectory = "./src/assets/images/") {
+    const images = [];
+
+    for (let i = 0; i < imagePaths.length; i++) {
+        const image = await preloadImage(imagePaths[i], imageDirectory);
+
+        images.push(image);
+    }
+
+    return images;
+}
+
+async function preloadImageGenerators(imagePaths, imageDirectory = "./src/assets/images/") {
+    const generators = [];
+
+    for (let i = 0; i < imagePaths.length; i++) {
+        const generator = await preloadImageGenerator(imagePaths[i], imageDirectory);
+
+        generators.push(generator);
+    }
+
+    return generators;
+}
+
+export { query, useSlider, useCheckbox, preloadImage, preloadImageGenerator, preloadImages, preloadImageGenerators };
