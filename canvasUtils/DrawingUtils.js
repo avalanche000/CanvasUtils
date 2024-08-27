@@ -79,6 +79,10 @@ class DrawingUtils {
             this.ctx.stroke();
         }
     }
+
+    image(image, ...args) {
+        this.ctx.drawImage(image, ...args);
+    }
 }
 
 export default DrawingUtils;
