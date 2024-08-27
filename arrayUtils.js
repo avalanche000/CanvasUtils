@@ -64,6 +64,11 @@ function nestedCounter(...args) {
     return array;
 }
 
+/**
+ * Chooses a random value from an array
+ * @param {any[]} array - Any array
+ * @returns {any} The randomly chosen value from the array
+ */
 function random(array) {
     return array[Math.floor(Math.random() * array.length)];
 }
