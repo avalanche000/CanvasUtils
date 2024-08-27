@@ -3,7 +3,7 @@
 /**
  * Returns an array of the specified length filled with the specified value
  * @param {number} length - The length of the array to be created
- * @param {any | Function} value - The value to fill each index of the array with, if this is an object, the same object will be used for each index
+ * @param {any | function} value - The value to fill each index of the array with, if you want to use an object then pass in a function that makes a new object each time
  * @returns {any[]} The final array
  */
 function arrayOf(length, value) {
