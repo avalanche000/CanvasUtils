@@ -3,10 +3,12 @@
 /**
  * Returns an array of the specified length filled with the specified value
  * @param {number} length - The length of the array to be created
- * @param {any} value - The value to fill each index of the array with
+ * @param {any | Function} value - The value to fill each index of the array with
  * @returns {any[]} The final array
  */
 function arrayOf(length, value) {
+    if (typeof value === "function") return Array.from({ length }, () => value());
+    
     return Array.from({ length }, () => value);
 }
 
