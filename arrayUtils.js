@@ -64,4 +64,8 @@ function nestedCounter(...args) {
     return array;
 }
 
-export { arrayOf, range, nestedCounter };
+function random(array) {
+    return array[Math.floor(Math.random() * array.length)];
+}
+
+export { arrayOf, range, nestedCounter, random };
