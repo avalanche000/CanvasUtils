@@ -63,4 +63,28 @@ function useCheckbox(checkboxElement, options) {
     };
 }
 
-export { query, useSlider, useCheckbox };
+async function preloadImage(imagePath, imageDirectory = "./src/assets/images/") {
+    return new Promise((resolve, reject) => {
+        const path = imageDirectory + imagePath;
+        const image = document.createElement("img");
+
+        image.onload = () => resolve(image);
+        image.onerror = (error) => reject(error);
+
+        image.src = path;
+    });
+}
+
+async function preloadImageGenerator(imagePath, imageDirectory = "./src/assets/images/") {
+    return new Promise((resolve, reject) => {
+        const path = imageDirectory + imagePath;
+        const image = document.createElement("img");
+
+        image.onload = () => resolve(() => image.cloneNode());
+        image.onerror = (error) => reject(error);
+
+        image.src = path;
+    });
+}
+
+export { query, useSlider, useCheckbox, preloadImage, preloadImageGenerator };
