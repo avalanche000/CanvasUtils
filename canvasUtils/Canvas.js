@@ -2,8 +2,6 @@
 
 import DrawingUtils from "./DrawingUtils.js";
 
-// comment
-
 class Canvas {
     constructor(DOMObject) {
         this.DOMObject = DOMObject;
