@@ -33,7 +33,7 @@ class DrawingUtils {
     }
 
     clear() {
-        this.ctx.clearRect(...this.canvas.rect);
+        this.ctx.clearRect(...this.canvas.rect.toArray());
 
         return this;
     }
@@ -58,7 +58,7 @@ class DrawingUtils {
     }
 
     fill(color) {
-        this.rect(color, this.canvas.rect);
+        this.rect(color, this.canvas.rect.toArray());
 
         return this;
     }
