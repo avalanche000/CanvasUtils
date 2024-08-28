@@ -34,6 +34,8 @@ class DrawingUtils {
 
     clear() {
         this.ctx.clearRect(...this.canvas.rect);
+
+        return this;
     }
 
     rect(color, rect, width) {
@@ -51,10 +53,14 @@ class DrawingUtils {
             this.ctx.lineWidth = width;
             this.ctx.stroke();
         }
+
+        return this;
     }
 
     fill(color) {
         this.rect(color, this.canvas.rect);
+
+        return this;
     }
 
     circle(color, pos, radius, width) {
@@ -72,6 +78,8 @@ class DrawingUtils {
             this.ctx.lineWidth = width;
             this.ctx.stroke();
         }
+
+        return this;
     }
 
     line(color, startPos, endPos, width = 1) {
@@ -86,6 +94,8 @@ class DrawingUtils {
         this.ctx.closePath();
 
         this.ctx.stroke();
+
+        return this;
     }
 
     poly(color, points, width) {
@@ -104,10 +114,14 @@ class DrawingUtils {
             this.ctx.lineWidth = width;
             this.ctx.stroke();
         }
+
+        return this;
     }
 
     image(image, ...args) {
         this.ctx.drawImage(image, ...args);
+
+        return this;
     }
 }
 
