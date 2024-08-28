@@ -73,4 +73,14 @@ function random(array) {
     return array[Math.floor(Math.random() * array.length)];
 }
 
-export { arrayOf, range, nestedCounter, random };
+/**
+ * ycles through the values of an array, wrapping them around
+ * @param {any[]} array - Any array
+ * @param {number} num - The offset to shift the array
+ * @returns {any[]} The shifted array
+ */
+function cycle(array, num) {
+    return range(array.length).map(i => array[(i + num) % array.length]);
+}
+
+export { arrayOf, range, nestedCounter, random, cycle };
