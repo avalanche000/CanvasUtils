@@ -1,12 +1,13 @@
 "use strict";
 
 import DrawingUtils from "./DrawingUtils.js";
+import Rect from "../shapeUtils/Rect.js";
 
 class Canvas {
     constructor(DOMObject) {
         this.DOMObject = DOMObject;
         this.draw = new DrawingUtils(this);
-        this.rect = [0, 0, 0, 0];
+        this.rect = new Rect(0, 0, 0, 0);
 
         window.addEventListener("resize", () => this.resize());
 
@@ -14,8 +15,8 @@ class Canvas {
     }
 
     resize() {
-        this.rect[2] = this.DOMObject.width = window.innerWidth;
-        this.rect[3] = this.DOMObject.height = window.innerHeight;
+        this.rect.width = this.DOMObject.width = window.innerWidth;
+        this.rect.height = this.DOMObject.height = window.innerHeight;
     }
 }
 
