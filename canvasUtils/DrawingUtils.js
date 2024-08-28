@@ -6,6 +6,32 @@ class DrawingUtils {
         this.ctx = this.canvas.DOMObject.getContext("2d");
     }
 
+    rotated(angle, origin) {
+        const newDrawingUtils = new DrawingUtils(this.canvas);
+
+        origin = origin ?? [0, 0];
+
+        newDrawingUtils.ctx.translate(origin[0], origin[1]);
+        newDrawingUtils.ctx.rotate(angle);
+        newDrawingUtils.ctx.translate(-origin[0], -origin[1]);
+
+        return newDrawingUtils;
+    }
+
+    useRotated(angle, origin, func) {
+        this.ctx.save();
+
+        this.ctx.translate(origin[0], origin[1]);
+        this.ctx.rotate(angle);
+        this.ctx.translate(-origin[0], -origin[1]);
+
+        func(this);
+
+        this.ctx.restore();
+
+        return this;
+    }
+
     clear() {
         this.ctx.clearRect(...this.canvas.rect);
     }
