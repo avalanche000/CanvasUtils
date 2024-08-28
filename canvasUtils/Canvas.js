@@ -21,7 +21,9 @@ class Canvas {
     }
 
     resize() {
-        this.setSize([this.DOMObject.innerWidth, this.DOMObject.innerHeight]);
+        if (this.DOMObject.parentNode == null) return;
+        
+        this.setSize([this.DOMObject.parentNode.innerWidth, this.DOMObject.parentNode.innerHeight]);
     }
 }
 
