@@ -1,5 +1,7 @@
 "use strict";
 
+import { wrap } from "./numberUtils.js";
+
 /**
  * Returns an array of the specified length filled with the specified value
  * @param {number} length - The length of the array to be created
@@ -80,7 +82,7 @@ function random(array) {
  * @returns {any[]} The shifted array
  */
 function cycle(array, num) {
-    return range(array.length).map(i => array[(i + num) % array.length]);
+    return range(array.length).map(i => array[wrap(0, array.length, i + num)]);
 }
 
 export { arrayOf, range, nestedCounter, random, cycle };
