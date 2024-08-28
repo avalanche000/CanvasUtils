@@ -4,14 +4,14 @@ import DrawingUtils from "./DrawingUtils.js";
 import Rect from "../shapeUtils/Rect.js";
 
 class Canvas {
-    constructor(options) {
-        this.DOMObject = options?.DOMObject ?? document.createElement("canvas");
+    constructor(options = {}) {
+        this.DOMObject = options.DOMObject ?? document.createElement("canvas");
         this.draw = new DrawingUtils(this);
         this.rect = new Rect(0, 0, 0, 0);
 
         this.DOMObject.addEventListener("resize", () => this.resize());
 
-        if (options?.size) this.setSize(options?.size);
+        if (options.size != null) this.setSize(options.size);
         else this.resize();
     }
 
