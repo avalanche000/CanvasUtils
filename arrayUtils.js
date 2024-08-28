@@ -74,7 +74,7 @@ function random(array) {
 }
 
 /**
- * ycles through the values of an array, wrapping them around
+ * Cycles through the values of an array, wrapping them around
  * @param {any[]} array - Any array
  * @param {number} num - The offset to shift the array
  * @returns {any[]} The shifted array
