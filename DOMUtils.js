@@ -111,4 +111,15 @@ async function preloadImageGenerators(imagePaths, imageDirectory = "./src/assets
     return generators;
 }
 
-export { query, useSlider, useCheckbox, preloadImage, preloadImageGenerator, preloadImages, preloadImageGenerators };
+function createImage(src) {
+    const image = new Image();
+    
+    return new Promise((resolve, reject) => {
+        image.addEventListener("load", () => resolve(image));
+        image.addEventListener("error", (error) => reject(error));
+        
+        image.src = src;
+    });
+}
+
+export { query, useSlider, useCheckbox, preloadImage, preloadImageGenerator, preloadImages, preloadImageGenerators, createImage };
