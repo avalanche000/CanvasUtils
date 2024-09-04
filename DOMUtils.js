@@ -63,27 +63,36 @@ function useCheckbox(checkboxElement, options) {
     };
 }
 
-async function preloadImage(imagePath, imageDirectory = "./src/assets/images/") {
+function createImage(src) {
+    const image = new Image();
+    
     return new Promise((resolve, reject) => {
-        const path = imageDirectory + imagePath;
-        const image = document.createElement("img");
-
-        image.onload = () => resolve(image);
-        image.onerror = (error) => reject(error);
-
-        image.src = path;
+        image.addEventListener("load", () => resolve(image));
+        image.addEventListener("error", (error) => reject(error));
+        
+        image.src = src;
     });
 }
 
-async function preloadImageGenerator(imagePath, imageDirectory = "./src/assets/images/") {
+function preloadImage(imagePath, imageDirectory = "./src/assets/images/") {
+    const image = new Image();
+    
     return new Promise((resolve, reject) => {
-        const path = imageDirectory + imagePath;
-        const image = document.createElement("img");
+        image.addEventListener("load", () => resolve(image));
+        image.addEventListener("error", (error) => reject(error));
+        
+        image.src = imageDirectory + imagePath;
+    });
+}
 
-        image.onload = () => resolve(() => image.cloneNode());
-        image.onerror = (error) => reject(error);
-
-        image.src = path;
+function preloadImageGenerator(imagePath, imageDirectory = "./src/assets/images/") {
+    const image = new Image();
+    
+    return new Promise((resolve, reject) => {
+        image.addEventListener("load", () => resolve(() => image.cloneNode()));
+        image.addEventListener("error", (error) => reject(error));
+        
+        image.src = imageDirectory + imagePath;
     });
 }
 
@@ -111,15 +120,4 @@ async function preloadImageGenerators(imagePaths, imageDirectory = "./src/assets
     return generators;
 }
 
-function createImage(src) {
-    const image = new Image();
-    
-    return new Promise((resolve, reject) => {
-        image.addEventListener("load", () => resolve(image));
-        image.addEventListener("error", (error) => reject(error));
-        
-        image.src = src;
-    });
-}
-
-export { query, useSlider, useCheckbox, preloadImage, preloadImageGenerator, preloadImages, preloadImageGenerators, createImage };
+export { query, useSlider, useCheckbox, createImage, preloadImage, preloadImageGenerator, preloadImages, preloadImageGenerators };
