@@ -74,7 +74,7 @@ function createImage(src) {
     });
 }
 
-function preloadImage(imagePath, imageDirectory = "./src/assets/images/") {
+function preloadImage(imagePath, imageDirectory = "/src/assets/images/") {
     const image = new Image();
     
     return new Promise((resolve, reject) => {
@@ -85,7 +85,7 @@ function preloadImage(imagePath, imageDirectory = "./src/assets/images/") {
     });
 }
 
-function preloadImageGenerator(imagePath, imageDirectory = "./src/assets/images/") {
+function preloadImageGenerator(imagePath, imageDirectory = "/src/assets/images/") {
     const image = new Image();
     
     return new Promise((resolve, reject) => {
@@ -96,7 +96,7 @@ function preloadImageGenerator(imagePath, imageDirectory = "./src/assets/images/
     });
 }
 
-async function preloadImages(imagePaths, imageDirectory = "./src/assets/images/") {
+async function preloadImages(imagePaths, imageDirectory = "/src/assets/images/") {
     const images = [];
 
     for (let i = 0; i < imagePaths.length; i++) {
@@ -108,7 +108,7 @@ async function preloadImages(imagePaths, imageDirectory = "./src/assets/images/"
     return images;
 }
 
-async function preloadImageGenerators(imagePaths, imageDirectory = "./src/assets/images/") {
+async function preloadImageGenerators(imagePaths, imageDirectory = "/src/assets/images/") {
     const generators = [];
 
     for (let i = 0; i < imagePaths.length; i++) {
@@ -157,4 +157,8 @@ async function useSpritesheet(
     };
 }
 
-export { query, useSlider, useCheckbox, createImage, preloadImage, preloadImageGenerator, preloadImages, preloadImageGenerators, useSpritesheet };
+function createJSON(path, JSONDirectory = "/src/assets/json/") {
+    return fetch(JSONDirectory + path).then((res) => res.json());
+}
+
+export { query, useSlider, useCheckbox, createImage, preloadImage, preloadImageGenerator, preloadImages, preloadImageGenerators, useSpritesheet, createJSON };
