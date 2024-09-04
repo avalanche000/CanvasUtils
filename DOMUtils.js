@@ -120,4 +120,41 @@ async function preloadImageGenerators(imagePaths, imageDirectory = "./src/assets
     return generators;
 }
 
+async function useSpritesheet(
+    path,
+    spritesheetDirectory = "/src/assets/spritesheets/"
+) {
+    const json = await fetch(spritesheetDirectory + path).then((response) =>
+        response.json()
+    );
+    
+    const image = await createImage(json.meta.image);
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+    
+    canvas.width = json.meta.size.w;
+    canvas.height = json.meta.size.h;
+    
+    ctx.drawImage(image, 0, 0);
+    
+    return (sprite) => {
+        const spriteRect = json.frames[sprite].frame;
+        const spriteCanvas = document.createElement("canvas");
+        const spriteCtx = spriteCanvas.getContext("2d");
+        const spriteImageData = ctx.getImageData(
+            spriteRect.x,
+            spriteRect.y,
+            spriteRect.w,
+            spriteRect.h
+        );
+        
+        spriteCanvas.width = spriteRect.w;
+        spriteCanvas.height = spriteRect.h;
+        
+        spriteCtx.putImageData(spriteImageData, 0, 0);
+        
+        return spriteCanvas;
+    };
+}
+
 export { query, useSlider, useCheckbox, createImage, preloadImage, preloadImageGenerator, preloadImages, preloadImageGenerators };
