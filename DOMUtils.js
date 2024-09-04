@@ -157,4 +157,4 @@ async function useSpritesheet(
     };
 }
 
-export { query, useSlider, useCheckbox, createImage, preloadImage, preloadImageGenerator, preloadImages, preloadImageGenerators };
+export { query, useSlider, useCheckbox, createImage, preloadImage, preloadImageGenerator, preloadImages, preloadImageGenerators, useSpritesheet };
