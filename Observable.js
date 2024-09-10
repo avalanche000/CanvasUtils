@@ -11,6 +11,8 @@ class Observable {
       Object.defineProperty(this, variable, {
         get: () => variables.get(variable),
         set: (value) => {
+          if (value === variables.get(variable)) return;
+          
           variables.set(variable, value);
           listeners.get(variable).forEach((cb) => cb(value));
         },
