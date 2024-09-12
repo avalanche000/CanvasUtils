@@ -19,9 +19,9 @@ class Observable {
       });
     });
 
-    this.unsubscribe = (variable, cb) => this.listeners.get(variable)?.delete(cb);
+    this.unsubscribe = (variable, cb) => listeners.get(variable)?.delete(cb);
     this.subscribe = (variable, cb) => {
-      this.listeners.get(variable)?.add(cb);
+      listeners.get(variable)?.add(cb);
 
       return () => this.unsubscribe(variable, cb);
     };
