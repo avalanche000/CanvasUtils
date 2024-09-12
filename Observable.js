@@ -1,41 +1,27 @@
 "use strict";
 
 class Observable {
-  constructor(...args) {
+  constructor(...variableNames) {
     const variables = new Map();
     const listeners = new Map();
 
-    args.forEach((variable) => {
-      listeners.set(variable, []);
+    variableNames.forEach(variable => {
+      listeners.set(variable, new Set());
 
       Object.defineProperty(this, variable, {
         get: () => variables.get(variable),
         set: (value) => {
-          if (value === variables.get(variable)) return;
-          
+          if (variables.get(variable) === value) return;
+
           variables.set(variable, value);
-          listeners.get(variable).forEach((cb) => cb(value));
+          listeners.get(variable).forEach(cb => cb(value));
         },
       });
     });
 
-    this.unsubscribe = (variable, cb) => {
-      const array = listeners.get(variable);
-
-      if (array == null) return;
-
-      const index = array.indexOf(cb);
-
-      if (index === -1) return;
-
-      delete array[index];
-    };
+    this.unsubscribe = (variable, cb) => this.listeners.get(variable)?.delete(cb);
     this.subscribe = (variable, cb) => {
-      const array = listeners.get(variable);
-
-      if (array == null) return;
-
-      array.push(cb);
+      this.listeners.get(variable)?.add(cb);
 
       return () => this.unsubscribe(variable, cb);
     };
