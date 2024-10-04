@@ -17,13 +17,11 @@ class Canvas {
 
     setSize(size) {
         this.rect.width = this.DOMObject.width = size[0];
-        this.rect.height = this.DOMObject.height = size[1];   
+        this.rect.height = this.DOMObject.height = size[1];
     }
 
-    resize() {
-        if (this.DOMObject.parentNode == null) return;
-        
-        this.setSize([this.DOMObject.parentNode.innerWidth, this.DOMObject.parentNode.innerHeight]);
+    resize() {        
+        this.setSize([this.DOMObject.clientWidth, this.DOMObject.clientHeight]);
     }
 }
 
