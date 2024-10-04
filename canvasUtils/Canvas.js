@@ -9,7 +9,7 @@ class Canvas {
         this.draw = new DrawingUtils(this);
         this.rect = new Rect(0, 0, 0, 0);
 
-        this.DOMObject.addEventListener("resize", () => this.resize());
+        this.DOMObject?.addEventListener("resize", () => this.resize());
 
         if (options.size != null) this.setSize(options.size);
         else this.resize();
