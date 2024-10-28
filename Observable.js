@@ -1,12 +1,13 @@
 "use strict";
 
 class Observable {
-  constructor(...variableNames) {
+  constructor(variableConfig = {}) {
     const variables = new Map();
     const listeners = new Map();
 
-    variableNames.forEach(variable => {
+    for (const variable in variableConfig) {
       listeners.set(variable, new Set());
+      variables.set(variable, variableConfig[variable]);
 
       Object.defineProperty(this, variable, {
         get: () => variables.get(variable),
@@ -17,7 +18,7 @@ class Observable {
           listeners.get(variable).forEach(cb => cb(value));
         },
       });
-    });
+    }
 
     this.unsubscribe = (variable, cb) => listeners.get(variable)?.delete(cb);
     this.subscribe = (variable, cb) => {
