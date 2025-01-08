@@ -16,7 +16,7 @@ function arrayOf(length, value) {
 
 /**
  * Returns an ordered array of increasing consecutive integers either [0, a) or [a, b) depending on the inputs
- * @param {number} a - The start of the array of integers, if b is null then a becomes the end of te array
+ * @param {number} a - The start of the array of integers, if b is null then a becomes the end of the array
  * @param {number | undefined} b - If defined, then b is the end of the array
  * @returns {number[]} The array of integers
  */
@@ -36,6 +36,25 @@ function range(a, b) {
     for (let i = min; i < max; i++) array.push(i);
 
     return array;
+}
+
+/**
+ * Repeatedly calls a function with increasing consecutive integers either [0, a) or [a, b) depending on the inputs
+ * @param {number} a - The start of the set of integers, if b is null then a becomes the end of the set
+ * @param {number | undefined} b - If defined, then b is the end of the set
+ */
+function loop(a, b, callback) {
+    let min = 0;
+    let max;
+
+    if (b == null) {
+        max = a;
+    } else {
+        min = a;
+        max = b;
+    }
+
+    for (let i = min; i < max; i++) func(i);
 }
 
 /**
@@ -85,4 +104,4 @@ function cycle(array, num) {
     return range(array.length).map(i => array[wrap(0, array.length, i + num)]);
 }
 
-export { arrayOf, range, nestedCounter, random, cycle };
+export { arrayOf, range, loop, nestedCounter, random, cycle };
