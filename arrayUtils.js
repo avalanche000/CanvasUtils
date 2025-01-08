@@ -54,7 +54,7 @@ function loop(a, b, callback) {
         max = b;
     }
 
-    for (let i = min; i < max; i++) func(i);
+    for (let i = min; i < max; i++) callback(i);
 }
 
 /**
